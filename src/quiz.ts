@@ -150,13 +150,15 @@ function calcResult(age: number): number {
 function renderIntro(): string {
   return `
     <div class="card">
-      <div class="intro-logo">👴</div>
+      <div class="intro-eyebrow">The Official Test</div>
+      <span class="intro-logo">👴</span>
       <h1 class="intro-title">The Unculator</h1>
       <p class="intro-subtitle">
         10 questions. One verdict.<br>
         Find out exactly how much of an unc you are.
       </p>
-      <button class="btn" id="btn-start">Find out</button>
+      <div class="intro-divider"></div>
+      <button class="btn" id="btn-start">Find out →</button>
     </div>
   `;
 }
@@ -164,18 +166,20 @@ function renderIntro(): string {
 function renderAge(): string {
   return `
     <div class="card">
-      <label class="age-label" for="age-input">How old are you?</label>
-      <input
-        id="age-input"
-        class="age-input"
-        type="number"
-        min="1"
-        max="120"
-        placeholder="Enter your age"
-        autofocus
-      />
+      <label class="age-label" for="age-input">First — how old are you?</label>
+      <div class="age-input-wrap">
+        <input
+          id="age-input"
+          class="age-input"
+          type="number"
+          min="1"
+          max="120"
+          placeholder="Your age"
+          autofocus
+        />
+      </div>
       <p class="error-msg" id="age-error"></p>
-      <button class="btn" id="btn-age-next">Next</button>
+      <button class="btn" id="btn-age-next">Continue →</button>
     </div>
   `;
 }
@@ -192,10 +196,12 @@ function shuffle<T>(arr: T[]): T[] {
 function renderQuestion(index: number): string {
   const q = state.questions[index]!;
   const progress = Math.round((index / QUESTIONS_PER_QUIZ) * 100);
+  const letters = ["A", "B", "C", "D"];
   const optionsHtml = shuffle(q.options)
     .map(
       (opt, i) => `
-        <button class="option-btn" data-score="${opt.uncScore}" data-index="${i}">
+        <button class="option-btn" data-score="${opt.uncScore}">
+          <span class="option-letter">${letters[i]}</span>
           ${opt.label}
         </button>
       `
@@ -206,8 +212,8 @@ function renderQuestion(index: number): string {
     <div class="card">
       <div class="progress-wrap">
         <div class="progress-meta">
-          <span>Question ${index + 1} of ${QUESTIONS_PER_QUIZ}</span>
-          <span>${progress}%</span>
+          <span class="progress-label">Question ${index + 1} of ${QUESTIONS_PER_QUIZ}</span>
+          <span class="progress-count">${progress}%</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" style="width: ${progress}%"></div>
@@ -226,10 +232,12 @@ function renderResult(): string {
 
   return `
     <div class="card">
-      <p class="result-label">Your unc score</p>
-      <p class="result-percentage">${pct}%</p>
-      <div class="result-bar-wrap">
-        <div class="result-bar-fill" id="result-bar" style="width: 0%"></div>
+      <div class="result-header">
+        <p class="result-label">Your unc score</p>
+        <p class="result-percentage">${pct}%</p>
+        <div class="result-bar-wrap">
+          <div class="result-bar-fill" id="result-bar" style="width: 0%"></div>
+        </div>
       </div>
       <p class="result-verdict">${title}</p>
       <p class="result-message">${description}</p>
