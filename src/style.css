@@ -25,9 +25,9 @@
 
 body {
   background:
-    radial-gradient(ellipse 70% 50% at 15% 0%, #1e1408 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 85% 100%, #180f04 0%, transparent 50%),
-    linear-gradient(160deg, #111009 0%, #0c0b0a 40%, #0a0c0e 100%);
+    radial-gradient(ellipse 70% 55% at 10% 0%, #2d1c06 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 90% 100%, #1f1003 0%, transparent 55%),
+    linear-gradient(155deg, #161008 0%, #0c0b0a 45%, #090b10 100%);
   color: var(--text);
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -44,8 +44,8 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 10% 5%, rgba(232, 151, 58, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 90% 95%, rgba(180, 100, 20, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 40% at 10% 5%, rgba(232, 151, 58, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 90% 95%, rgba(180, 100, 20, 0.10) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
